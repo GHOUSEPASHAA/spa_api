@@ -644,7 +644,7 @@ async def spa_activity():
                 build_spa_event(
                     cancel_booking_data,
                     "BOOK",
-                    random.choice(statuses)
+                    "CANCEL"
                 )
             )
 
