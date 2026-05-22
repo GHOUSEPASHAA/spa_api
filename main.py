@@ -632,6 +632,13 @@ async def spa_activity():
                     activeclubid
                 )
             )
+            cancel_booking_data[
+                "DURATION"
+            ] = 0
+
+            cancel_booking_data[
+                "SPA_ACTIVITY_DURATION"
+            ] = 0
 
             final_records.append(
                 build_spa_event(
