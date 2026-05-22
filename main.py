@@ -230,6 +230,16 @@ def generate_base_spa_booking(activeclubid):
         "SPA_ACTIVITY_DURATION":
             duration,
 
+        "SPA_ACTIVITY_DETAILS":
+            random.choice(
+                spa_services
+            ),
+
+        "SPA_PRODUCT_DETAILS":
+            random.choice(
+                spa_products
+            ),
+
         
 
         "SPA_DISCOUNT_AMOUNT":
@@ -492,6 +502,20 @@ def build_spa_event(
             if action == "ORDER"
             else None
         ),
+
+        "SPA_ACTIVITY_DETAILS":
+            record[
+                "SPA_ACTIVITY_DETAILS"
+            ],
+
+        "SPA_PRODUCT_DETAILS":
+            (
+                record[
+                    "SPA_PRODUCT_DETAILS"
+                ]
+                if action == "ORDER"
+                else None
+            ),
 
         
 
