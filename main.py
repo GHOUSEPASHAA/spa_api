@@ -12,9 +12,9 @@ app = FastAPI(title="SPA Activity API")
 fake = Faker()
 
 properties = {
-    "GRC": "Grand Royale Casino",
-    "AC": "Atlantis Casino",
-    "RRC": "Red Rock Casino"
+    "RLC": "Red Lantern Casino",
+    "BMC": "Blue Meridian Casino",
+    "GPC": "Glass Palm Casino"
 }
 
 spa_services = [
