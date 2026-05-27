@@ -108,7 +108,7 @@ def generate_person_id(activeclubid):
     return str(
         int(
             hashlib.md5(
-                activeclubid.encode()
+              ('spa' + activeclubid).encode()
             ).hexdigest(),
             16
         ) % 90000 + 10000
@@ -173,6 +173,82 @@ def generate_base_spa_booking(activeclubid):
         2
     )
 
+
+    activity_details = [
+    {
+        "activity_actual_price":
+            round(
+                random.uniform(50, 300),
+                2
+            ),
+
+        "activity_id":
+            random.randint(
+                100,
+                999
+            ),
+
+        "activity_name":
+            random.choice(
+                spa_services
+            ),
+
+        "activity_price":
+            round(
+                random.uniform(50, 300),
+                2
+            ),
+
+        "activity_type":
+            random.choice(
+                ["A", "B", "C"]
+            )
+    }
+]
+
+    product_details = [
+        {
+            "product_actual_price":
+                round(
+                    random.uniform(10, 150),
+                    2
+                ),
+
+            "product_id":
+                random.randint(
+                    1000,
+                    9999
+                ),
+
+            "product_name":
+                random.choice(
+                    spa_products
+                ),
+
+            "product_price":
+                        round(
+                            random.uniform(10, 150),
+                            2
+                        ),
+
+                    "product_line":
+                        "P"
+                }
+            ]
+
+    transaction_amount = (
+        sum(
+            item["activity_price"]
+            for item in activity_details
+        )
+        +
+        sum(
+            item["product_price"]
+            for item in product_details
+        )
+    )
+
+    
     return {
 
         
@@ -230,15 +306,9 @@ def generate_base_spa_booking(activeclubid):
         "SPA_ACTIVITY_DURATION":
             duration,
 
-        "SPA_ACTIVITY_DETAILS":
-            random.choice(
-                spa_services
-            ),
+        "SPA_ACTIVITY_DETAILS": activity_details,
 
-        "SPA_PRODUCT_DETAILS":
-            random.choice(
-                spa_products
-            ),
+        "SPA_PRODUCT_DETAILS": product_details,
 
         
 
@@ -467,6 +537,7 @@ def build_spa_event(
             record[
                 "SPA_ACTIVITY_DURATION"
             ],
+    
 
         "SPA_ACTIVITY_CANCEL_REASON":
                 (
